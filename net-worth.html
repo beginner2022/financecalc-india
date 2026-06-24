@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Net Worth Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Net Worth Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="assets" placeholder="Total Assets">
+  <br>
+  <input id="liabilities" placeholder="Total Liabilities">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let a = Number(document.getElementById("assets").value);
+  let l = Number(document.getElementById("liabilities").value);
+
+  let net = a - l;
+
+  document.getElementById("result").innerText =
+    "Net Worth: ₹ " + net.toFixed(0);
+}
+</script>
+
+</body>
+</html>
