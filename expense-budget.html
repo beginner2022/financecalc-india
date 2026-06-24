@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Budget Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Budget Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="income" placeholder="Monthly Income">
+  <br>
+  <input id="expense" placeholder="Monthly Expenses">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let income = Number(document.getElementById("income").value);
+  let expense = Number(document.getElementById("expense").value);
+
+  let savings = income - expense;
+
+  document.getElementById("result").innerText =
+    "Monthly Savings: ₹ " + savings.toFixed(0);
+}
+</script>
+
+</body>
+</html>
