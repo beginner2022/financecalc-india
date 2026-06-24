@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Savings Goal Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Savings Goal Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="goal" placeholder="Goal Amount">
+  <br>
+  <input id="months" placeholder="Months">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let g = Number(document.getElementById("goal").value);
+  let m = Number(document.getElementById("months").value);
+
+  let monthly = g / m;
+
+  document.getElementById("result").innerText =
+    "Monthly Saving Needed: ₹ " + monthly.toFixed(0);
+}
+</script>
+
+</body>
+</html>
