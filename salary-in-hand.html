@@ -3,12 +3,16 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Salary In-Hand Calculator India (2026) | Take Home Salary Tool</title>
+
+  <title>Salary In-Hand Calculator India 2026 | CTC to Take Home Salary</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta name="description"
-        content="Free Salary In-Hand Calculator for India. Calculate monthly take-home salary from CTC after tax deductions instantly.">
+        content="Free Salary In-Hand Calculator India. Convert CTC to monthly take-home salary after tax, PF, and deductions. Accurate salary breakdown tool for employees.">
+
+  <meta name="keywords"
+        content="salary calculator india, in hand salary calculator, ctc to in hand salary, take home salary calculator, monthly salary calculator india">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -17,18 +21,18 @@
 
 <header>
   <h1>Salary In-Hand Calculator</h1>
-  <p>Calculate your monthly take-home salary from CTC</p>
+  <p>Convert your CTC into monthly take-home salary</p>
 </header>
 
 <div class="container">
 
-  <!-- CALCULATOR CARD -->
+  <!-- MAIN CALCULATOR -->
   <div class="calculator-card">
 
-    <h2>Enter Salary Details</h2>
+    <h2>Salary Details</h2>
 
     <p class="subtitle">
-      Find your exact monthly in-hand salary after tax deduction.
+      Enter your annual CTC and estimated deductions.
     </p>
 
     <label>Annual CTC (₹)</label>
@@ -37,7 +41,10 @@
     <label>Tax Rate (%)</label>
     <input id="tax" type="number" placeholder="e.g. 10">
 
-    <button onclick="calculate()">Calculate Salary</button>
+    <label>PF / Other Deductions (%)</label>
+    <input id="pf" type="number" placeholder="e.g. 12">
+
+    <button onclick="calculateSalary()">Calculate Salary</button>
 
     <div class="result" id="result">
       Your result will appear here
@@ -45,13 +52,13 @@
 
   </div>
 
-  <!-- BREAKDOWN CARD -->
+  <!-- BREAKDOWN -->
   <div class="calculator-card">
 
     <h3>Salary Breakdown</h3>
 
     <div id="breakdown">
-      Fill details to see breakdown
+      Enter values to see detailed breakdown
     </div>
 
   </div>
@@ -59,46 +66,80 @@
   <!-- EXPLANATION -->
   <div class="calculator-card">
 
-    <h3>How it works</h3>
+    <h3>How Salary is Calculated</h3>
 
     <p>
-      Your annual CTC is divided into monthly salary.
-      Tax is estimated and deducted to calculate take-home pay.
+      Your annual CTC is divided into monthly gross salary.
+      Then tax and PF deductions are applied to calculate your in-hand salary.
     </p>
 
     <p>
-      This tool gives an approximate estimate for planning purposes.
+      This tool gives an estimated take-home salary for financial planning.
     </p>
 
   </div>
 
-  <!-- FAQ -->
+  <!-- SEO CONTENT SECTION -->
   <div class="calculator-card">
 
-    <h3>FAQ</h3>
+    <h3>What is In-Hand Salary?</h3>
 
-    <p><b>What is in-hand salary?</b><br>
-    The amount you receive in your bank account after deductions.</p>
+    <p>
+      In-hand salary is the actual amount credited to your bank account
+      after deductions like tax, PF, and other contributions.
+    </p>
 
-    <p><b>Is CTC equal to salary?</b><br>
-    No, CTC includes benefits and taxes. In-hand is lower.</p>
+    <p>
+      It is usually lower than CTC (Cost to Company), which includes benefits.
+    </p>
 
-    <p><b>Is this accurate?</b><br>
-    It is an estimate for financial planning.</p>
+  </div>
+
+  <!-- FAQ (VERY IMPORTANT FOR SEO) -->
+  <div class="calculator-card">
+
+    <h3>Frequently Asked Questions</h3>
+
+    <p><b>Is CTC equal to in-hand salary?</b><br>
+    No, CTC includes bonuses and employer contributions.</p>
+
+    <p><b>How accurate is this calculator?</b><br>
+    It gives a close estimate based on inputs, but actual salary may vary.</p>
+
+    <p><b>What deductions are included?</b><br>
+    Tax and PF deductions are considered.</p>
+
+  </div>
+
+  <!-- RELATED CALCULATORS -->
+  <div class="calculator-card">
+
+    <h3>Related Calculators</h3>
+
+    <p>
+      <a href="emi.html">EMI Calculator</a> |
+      <a href="income-tax.html">Income Tax Calculator</a> |
+      <a href="epf.html">EPF Calculator</a> |
+      <a href="gratuity.html">Gratuity Calculator</a>
+    </p>
 
   </div>
 
 </div>
 
 <script>
-function calculate() {
+function calculateSalary() {
 
   let ctc = Number(document.getElementById("ctc").value);
   let tax = Number(document.getElementById("tax").value);
+  let pf = Number(document.getElementById("pf").value);
 
   let monthlyGross = ctc / 12;
+
   let taxAmount = monthlyGross * (tax / 100);
-  let inHand = monthlyGross - taxAmount;
+  let pfAmount = monthlyGross * (pf / 100);
+
+  let inHand = monthlyGross - taxAmount - pfAmount;
 
   document.getElementById("result").innerHTML =
     "💰 Monthly In-Hand Salary: ₹ " +
@@ -107,7 +148,8 @@ function calculate() {
   document.getElementById("breakdown").innerHTML =
     `
     Monthly Gross: ₹ ${monthlyGross.toFixed(0)} <br>
-    Estimated Tax: ₹ ${taxAmount.toFixed(0)} <br>
+    Tax Deduction: ₹ ${taxAmount.toFixed(0)} <br>
+    PF/Other Deduction: ₹ ${pfAmount.toFixed(0)} <br>
     <b>Final In-Hand: ₹ ${inHand.toFixed(0)}</b>
     `;
 }
