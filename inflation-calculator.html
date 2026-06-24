@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inflation Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Inflation Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="amount" placeholder="Current Amount">
+  <br>
+  <input id="rate" placeholder="Inflation %">
+  <br>
+  <input id="years" placeholder="Years">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let A = Number(document.getElementById("amount").value);
+  let r = Number(document.getElementById("rate").value) / 100;
+  let t = Number(document.getElementById("years").value);
+
+  let future = A * Math.pow(1 + r, t);
+
+  document.getElementById("result").innerText =
+    "Future Value Needed: ₹ " + future.toFixed(0);
+}
+</script>
+
+</body>
+</html>
