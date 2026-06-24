@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CAGR Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>CAGR Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="start" placeholder="Start Value">
+  <br>
+  <input id="end" placeholder="End Value">
+  <br>
+  <input id="years" placeholder="Years">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let S = Number(document.getElementById("start").value);
+  let E = Number(document.getElementById("end").value);
+  let N = Number(document.getElementById("years").value);
+
+  let cagr = (Math.pow(E / S, 1 / N) - 1) * 100;
+
+  document.getElementById("result").innerText =
+    "CAGR: " + cagr.toFixed(2) + " %";
+}
+</script>
+
+</body>
+</html>
