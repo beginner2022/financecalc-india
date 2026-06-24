@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gratuity Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Gratuity Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="salary" placeholder="Last Drawn Salary">
+  <br>
+  <input id="years" placeholder="Years of Service">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let salary = Number(document.getElementById("salary").value);
+  let years = Number(document.getElementById("years").value);
+
+  let gratuity = (salary * 15 * years) / 26;
+
+  document.getElementById("result").innerText =
+    "Gratuity Amount: ₹ " + gratuity.toFixed(0);
+}
+</script>
+
+</body>
+</html>
