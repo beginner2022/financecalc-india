@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hourly Wage Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Hourly Wage Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="salary" placeholder="Monthly Salary">
+  <br>
+  <input id="hours" placeholder="Hours per month (e.g. 160)">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let salary = Number(document.getElementById("salary").value);
+  let hours = Number(document.getElementById("hours").value);
+
+  let wage = salary / hours;
+
+  document.getElementById("result").innerText =
+    "Hourly Wage: ₹ " + wage.toFixed(2);
+}
+</script>
+
+</body>
+</html>
