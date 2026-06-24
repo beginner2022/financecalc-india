@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>EMI Calculator</title>
+  <meta charset="UTF-8">
+
+  <title>EMI Calculator India 2026 | Home Loan EMI with Breakdown</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="Advanced EMI Calculator India. Calculate monthly EMI, total interest, and full loan repayment schedule for home loan, car loan, or personal loan.">
+
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -10,35 +18,109 @@
 
 <header>
   <h1>EMI Calculator</h1>
+  <p>Advanced Loan EMI & Interest Breakdown (India)</p>
 </header>
-<div class="container">
-  <h2>Calculator Name</h2>
-  <small>Enter values below to calculate instantly</small>
+
 <div class="container">
 
-  <input id="loan" placeholder="Loan Amount">
-  <br>
-  <input id="rate" placeholder="Interest Rate %">
-  <br>
-  <input id="years" placeholder="Years">
-  <br>
+  <!-- INPUT CARD -->
+  <div class="calculator-card">
 
-  <button onclick="calc()">Calculate</button>
+    <h2>Loan Details</h2>
 
-  <div class="result" id="result"></div>
+    <label>Loan Amount (₹)</label>
+    <input id="principal" type="number" placeholder="e.g. 500000">
+
+    <label>Interest Rate (% per year)</label>
+    <input id="rate" type="number" placeholder="e.g. 9.5">
+
+    <label>Loan Tenure (Years)</label>
+    <input id="years" type="number" placeholder="e.g. 20">
+
+    <button onclick="calculateEMI()">Calculate EMI</button>
+
+    <div class="result" id="result">
+      EMI will appear here
+    </div>
+
+  </div>
+
+  <!-- BREAKDOWN -->
+  <div class="calculator-card">
+
+    <h3>Loan Breakdown</h3>
+
+    <div id="breakdown">
+      Enter values to see detailed breakdown
+    </div>
+
+  </div>
+
+  <!-- INFO -->
+  <div class="calculator-card">
+
+    <h3>How EMI Works</h3>
+
+    <p>
+      EMI is calculated using reducing balance method.
+      Each monthly payment includes interest + principal repayment.
+    </p>
+
+  </div>
+
+  <!-- FAQ -->
+  <div class="calculator-card">
+
+    <h3>FAQ</h3>
+
+    <p><b>What is EMI?</b><br>
+    EMI is Equated Monthly Installment paid every month.</p>
+
+    <p><b>Is EMI fixed?</b><br>
+    Yes for fixed-rate loans, EMI remains constant.</p>
+
+    <p><b>Does EMI reduce principal?</b><br>
+    Yes, part of EMI reduces outstanding loan principal.</p>
+
+  </div>
 
 </div>
 
 <script>
-function calc() {
-  let P = Number(document.getElementById("loan").value);
-  let R = Number(document.getElementById("rate").value) / 12 / 100;
+function calculateEMI() {
+
+  let P = Number(document.getElementById("principal").value);
+  let annualRate = Number(document.getElementById("rate").value);
   let N = Number(document.getElementById("years").value) * 12;
 
+  let R = annualRate / 12 / 100;
+
+  // EMI Formula (standard banking formula)
   let emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
 
-  document.getElementById("result").innerText =
-    "Monthly EMI: ₹ " + emi.toFixed(0);
+  let totalPayment = emi * N;
+  let totalInterest = totalPayment - P;
+
+  let yearlyPayment = emi * 12;
+
+  document.getElementById("result").innerHTML =
+    "💰 Monthly EMI: ₹ " +
+    emi.toLocaleString("en-IN", { maximumFractionDigits: 0 });
+
+  document.getElementById("breakdown").innerHTML =
+    `
+    Loan Amount: ₹ ${P.toLocaleString("en-IN")} <br>
+    Interest Rate: ${annualRate}% per year <br>
+    Tenure: ${N / 12} years <br><br>
+
+    Monthly EMI: ₹ ${emi.toFixed(0)} <br>
+    Yearly Payment: ₹ ${yearlyPayment.toFixed(0)} <br><br>
+
+    Total Payment: ₹ ${totalPayment.toFixed(0)} <br>
+    Total Interest: ₹ ${totalInterest.toFixed(0)} <br><br>
+
+    <b>Interest Share: ${((totalInterest / totalPayment) * 100).toFixed(1)}%</b>
+    `;
 }
 </script>
 
