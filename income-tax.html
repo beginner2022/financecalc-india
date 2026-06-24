@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Income Tax Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Income Tax Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="income" placeholder="Annual Income">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let income = Number(document.getElementById("income").value);
+  let tax = 0;
+
+  if (income <= 300000) tax = 0;
+  else if (income <= 600000) tax = (income - 300000) * 0.05;
+  else if (income <= 900000) tax = 15000 + (income - 600000) * 0.10;
+  else if (income <= 1200000) tax = 45000 + (income - 900000) * 0.15;
+  else if (income <= 1500000) tax = 90000 + (income - 1200000) * 0.20;
+  else tax = 150000 + (income - 1500000) * 0.30;
+
+  document.getElementById("result").innerText =
+    "Estimated Tax: ₹ " + tax.toFixed(0);
+}
+</script>
+
+</body>
+</html>
