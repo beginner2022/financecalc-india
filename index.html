@@ -1,32 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>FinanceCalc India</title>
+  <meta charset="UTF-8">
+  <title>FinanceCalc India | EMI, SIP, Tax, Salary Calculators</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Free finance calculators for EMI, SIP, income tax, salary, FD, RD, CAGR and more. Simple, fast and accurate tools for India.">
+
+  <meta name="keywords" content="emi calculator, sip calculator, income tax calculator, salary calculator india, fd calculator, rd calculator">
+
   <link rel="stylesheet" href="style.css">
-
-
 </head>
 
 <body>
 
+<!-- TOP BAR -->
 <header class="topbar">
   <h1>FinanceCalc India</h1>
-   <!-- HERO INFO -->
-  <div style="text-align:left; margin-bottom:20px;">
+
+  <div class="search-wrap">
+    <input id="search" placeholder="Search EMI, SIP, Tax, Salary..." onkeyup="searchTools()">
+  </div>
+
+  <button onclick="toggleDark()" class="mode-btn">🌙</button>
+</header>
+
+<!-- HERO SECTION -->
+<section class="container">
+
+  <div style="margin:20px 0;">
     <h2>Smart Finance Tools for Everyone</h2>
     <p style="color:#64748b;">
       Salary • Loans • Investments • Tax • Retirement
     </p>
   </div>
-
-  <div class="search-wrap">
-    <input id="search" placeholder="Search calculators (EMI, SIP, Tax...)" onkeyup="searchTools()">
-  </div>
-
-  <button onclick="toggleDark()" class="mode-btn">🌙</button>
-</header>
-<div class="container">
 
   <div class="quick">
     <a class="card" href="emi.html">🔥 EMI</a>
@@ -34,99 +43,86 @@
     <a class="card" href="income-tax.html">🧾 Tax</a>
     <a class="card" href="salary-in-hand.html">💰 Salary</a>
   </div>
-<div class="container">
 
- 
+</section>
 
-  <!-- CATEGORY GRID -->
+<!-- MAIN CONTENT -->
+<main class="container">
 
+  <!-- SALARY -->
   <h3>💰 Salary & Income</h3>
   <div class="grid">
-
     <a class="card" href="salary-in-hand.html">Salary In-Hand</a>
     <a class="card" href="hourly-wage.html">Hourly Wage</a>
-
   </div>
 
+  <!-- LOANS -->
   <h3>🏦 Loans</h3>
   <div class="grid">
-
     <a class="card" href="emi.html">EMI Calculator</a>
     <a class="card" href="home-loan-emi.html">Home Loan EMI</a>
     <a class="card" href="loan-eligibility.html">Loan Eligibility</a>
     <a class="card" href="loan-prepayment.html">Loan Prepayment</a>
     <a class="card" href="debt-to-income.html">Debt-to-Income</a>
-
   </div>
 
+  <!-- INVESTMENTS -->
   <h3>📈 Investments</h3>
   <div class="grid">
-
     <a class="card" href="sip.html">SIP Calculator</a>
-    <a class="card" href="cagr.html">CAGR</a>
+    <a class="card" href="cagr.html">CAGR Calculator</a>
     <a class="card" href="compound-interest.html">Compound Interest</a>
     <a class="card" href="fd.html">FD Calculator</a>
     <a class="card" href="rd.html">RD Calculator</a>
     <a class="card" href="roi.html">ROI Calculator</a>
-
   </div>
 
+  <!-- TAX -->
   <h3>🧾 Tax Tools</h3>
   <div class="grid">
-
     <a class="card" href="income-tax.html">Income Tax</a>
     <a class="card" href="gst.html">GST Calculator</a>
     <a class="card" href="simple-interest.html">Simple Interest</a>
-
   </div>
 
+  <!-- RETIREMENT -->
   <h3>🧓 Retirement</h3>
   <div class="grid">
-
-    <a class="card" href="epf.html">EPF</a>
-    <a class="card" href="ppf.html">PPF</a>
-    <a class="card" href="nps.html">NPS</a>
-    <a class="card" href="gratuity.html">Gratuity</a>
+    <a class="card" href="epf.html">EPF Calculator</a>
+    <a class="card" href="ppf.html">PPF Calculator</a>
+    <a class="card" href="nps.html">NPS Calculator</a>
+    <a class="card" href="gratuity.html">Gratuity Calculator</a>
     <a class="card" href="retirement-corpus.html">Retirement Corpus</a>
-
   </div>
 
+  <!-- PLANNING -->
   <h3>🧠 Planning Tools</h3>
   <div class="grid">
-
     <a class="card" href="budget.html">Budget Calculator</a>
     <a class="card" href="net-worth.html">Net Worth</a>
     <a class="card" href="emergency-fund.html">Emergency Fund</a>
     <a class="card" href="inflation-calculator.html">Inflation Calculator</a>
     <a class="card" href="savings-goal.html">Savings Goal</a>
-
   </div>
 
-</div>
+</main>
+
+<!-- SCRIPT -->
 <script>
 function toggleDark() {
   document.body.classList.toggle("dark");
 }
 
-// SIMPLE SEARCH FILTER
 function searchTools() {
   let input = document.getElementById("search").value.toLowerCase();
   let cards = document.getElementsByClassName("card");
 
   for (let i = 0; i < cards.length; i++) {
     let text = cards[i].innerText.toLowerCase();
-    if (text.includes(input)) {
-      cards[i].style.display = "";
-    } else {
-      cards[i].style.display = "none";
-    }
+    cards[i].style.display = text.includes(input) ? "" : "none";
   }
 }
 </script>
+
 </body>
 </html>
-
-
-
-
-
