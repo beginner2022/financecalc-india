@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Salary In-Hand Calculator</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #f4f6f9;
+    }
+    input {
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Salary In-Hand Calculator</h1>
+
+<input id="ctc" placeholder="CTC per year">
+<br>
+<input id="tax" placeholder="Tax %">
+<br><br>
+
+<button onclick="calc()">Calculate</button>
+
+<h2 id="result"></h2>
+
+<script>
+function calc() {
+  let ctc = document.getElementById("ctc").value;
+  let tax = document.getElementById("tax").value;
+
+  let monthly = ctc / 12;
+  let taxAmt = monthly * (tax / 100);
+  let inHand = monthly - taxAmt;
+
+  document.getElementById("result").innerText =
+    "Monthly In-Hand: ₹ " + inHand.toFixed(0);
+}
+</script>
+
+</body>
+</html>
