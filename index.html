@@ -2,56 +2,28 @@
 <html>
 <head>
   <title>FinanceCalc India</title>
-  <style>
-    body {
-      font-family: Arial;
-      text-align: center;
-      background: #f4f6f9;
-    }
-    h1 { color: #1a73e8; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      width: 80%;
-      margin: auto;
-      margin-top: 30px;
-    }
-
-    a {
-      padding: 15px;
-      background: white;
-      text-decoration: none;
-      color: black;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    a:hover {
-      background: #1a73e8;
-      color: white;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1>FinanceCalc India</h1>
-<p>All Financial Calculators in One Place</p>
+<header>
+  <h1>FinanceCalc India</h1>
+  <p>All Financial Calculators in One Place</p>
+</header>
 
-<div class="grid">
+<div class="container">
 
-  <a href="salary-in-hand.html">Salary In-Hand</a>
-  <a href="income-tax.html">Income Tax</a>
-  <a href="emi.html">EMI Calculator</a>
-  <a href="sip.html">SIP Calculator</a>
-  <a href="compound-interest.html">Compound Interest</a>
+  <div class="grid">
 
-  <a href="gst.html">GST Calculator</a>
-  <a href="epf.html">EPF Calculator</a>
-  <a href="gratuity.html">Gratuity</a>
-  <a href="cagr.html">CAGR</a>
-  <a href="future-value.html">Future Value</a>
+    <a class="card" href="salary.html">Salary In-Hand</a>
+    <a class="card" href="emi.html">EMI Calculator</a>
+    <a class="card" href="sip.html">SIP Calculator</a>
+    <a class="card" href="income-tax.html">Income Tax</a>
+    <a class="card" href="gst.html">GST Calculator</a>
+
+  </div>
 
 </div>
 
