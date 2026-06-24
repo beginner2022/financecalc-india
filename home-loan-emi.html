@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home Loan EMI Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Home Loan EMI Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="loan" placeholder="Loan Amount">
+  <br>
+  <input id="rate" placeholder="Interest Rate %">
+  <br>
+  <input id="years" placeholder="Years">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let P = Number(document.getElementById("loan").value);
+  let R = Number(document.getElementById("rate").value) / 12 / 100;
+  let N = Number(document.getElementById("years").value) * 12;
+
+  let emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+
+  document.getElementById("result").innerText =
+    "Home Loan EMI: ₹ " + emi.toFixed(0);
+}
+</script>
+
+</body>
+</html>
