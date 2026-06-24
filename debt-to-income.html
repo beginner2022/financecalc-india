@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Debt to Income Ratio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Debt-to-Income Ratio</h1>
+</header>
+
+<div class="container">
+
+  <input id="debt" placeholder="Monthly Debt Payments">
+  <br>
+  <input id="income" placeholder="Monthly Income">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let d = Number(document.getElementById("debt").value);
+  let i = Number(document.getElementById("income").value);
+
+  let ratio = (d / i) * 100;
+
+  document.getElementById("result").innerText =
+    "DTI Ratio: " + ratio.toFixed(2) + " %";
+}
+</script>
+
+</body>
+</html>
