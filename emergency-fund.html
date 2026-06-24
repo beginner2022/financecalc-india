@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Emergency Fund Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Emergency Fund Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="expense" placeholder="Monthly Expenses">
+  <br>
+  <input id="months" placeholder="Months (6-12 recommended)">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let e = Number(document.getElementById("expense").value);
+  let m = Number(document.getElementById("months").value);
+
+  let fund = e * m;
+
+  document.getElementById("result").innerText =
+    "Emergency Fund Needed: ₹ " + fund.toFixed(0);
+}
+</script>
+
+</body>
+</html>
