@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PPF Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>PPF Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="yearly" placeholder="Yearly Investment">
+  <br>
+  <input id="rate" placeholder="Interest Rate % (default 7.1)">
+  <br>
+  <input id="years" placeholder="Years">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let P = Number(document.getElementById("yearly").value);
+  let r = Number(document.getElementById("rate").value || 7.1) / 100;
+  let n = Number(document.getElementById("years").value);
+
+  let total = P * n;
+  let maturity = total * Math.pow(1 + r, n);
+
+  document.getElementById("result").innerText =
+    "PPF Maturity: ₹ " + maturity.toFixed(0);
+}
+</script>
+
+</body>
+</html>
