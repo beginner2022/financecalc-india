@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Salary In-Hand Calculator</title>
+  <meta charset="UTF-8">
+  <title>Salary In-Hand Calculator India (2026) | Take Home Salary Tool</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="Free Salary In-Hand Calculator for India. Calculate monthly take-home salary from CTC after tax deductions instantly.">
+
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -10,35 +17,99 @@
 
 <header>
   <h1>Salary In-Hand Calculator</h1>
+  <p>Calculate your monthly take-home salary from CTC</p>
 </header>
-  <div class="container">
-  <h2>Calculator Name</h2>
-  <small>Enter values below to calculate instantly</small>
 
 <div class="container">
 
-  <input id="ctc" placeholder="Annual CTC">
-  <br>
-  <input id="tax" placeholder="Tax %">
-  <br>
+  <!-- CALCULATOR CARD -->
+  <div class="calculator-card">
 
-  <button onclick="calculate()">Calculate</button>
+    <h2>Enter Salary Details</h2>
 
-  <div class="result" id="result"></div>
+    <p class="subtitle">
+      Find your exact monthly in-hand salary after tax deduction.
+    </p>
+
+    <label>Annual CTC (₹)</label>
+    <input id="ctc" type="number" placeholder="e.g. 1200000">
+
+    <label>Tax Rate (%)</label>
+    <input id="tax" type="number" placeholder="e.g. 10">
+
+    <button onclick="calculate()">Calculate Salary</button>
+
+    <div class="result" id="result">
+      Your result will appear here
+    </div>
+
+  </div>
+
+  <!-- BREAKDOWN CARD -->
+  <div class="calculator-card">
+
+    <h3>Salary Breakdown</h3>
+
+    <div id="breakdown">
+      Fill details to see breakdown
+    </div>
+
+  </div>
+
+  <!-- EXPLANATION -->
+  <div class="calculator-card">
+
+    <h3>How it works</h3>
+
+    <p>
+      Your annual CTC is divided into monthly salary.
+      Tax is estimated and deducted to calculate take-home pay.
+    </p>
+
+    <p>
+      This tool gives an approximate estimate for planning purposes.
+    </p>
+
+  </div>
+
+  <!-- FAQ -->
+  <div class="calculator-card">
+
+    <h3>FAQ</h3>
+
+    <p><b>What is in-hand salary?</b><br>
+    The amount you receive in your bank account after deductions.</p>
+
+    <p><b>Is CTC equal to salary?</b><br>
+    No, CTC includes benefits and taxes. In-hand is lower.</p>
+
+    <p><b>Is this accurate?</b><br>
+    It is an estimate for financial planning.</p>
+
+  </div>
 
 </div>
 
 <script>
 function calculate() {
+
   let ctc = Number(document.getElementById("ctc").value);
   let tax = Number(document.getElementById("tax").value);
 
-  let monthly = ctc / 12;
-  let taxAmount = monthly * (tax / 100);
-  let inHand = monthly - taxAmount;
+  let monthlyGross = ctc / 12;
+  let taxAmount = monthlyGross * (tax / 100);
+  let inHand = monthlyGross - taxAmount;
 
-  document.getElementById("result").innerText =
-    "Monthly In-Hand: ₹ " + inHand.toFixed(0);
+  document.getElementById("result").innerHTML =
+    "💰 Monthly In-Hand Salary: ₹ " +
+    inHand.toLocaleString("en-IN", { maximumFractionDigits: 0 });
+
+  document.getElementById("breakdown").innerHTML =
+    `
+    Monthly Gross: ₹ ${monthlyGross.toFixed(0)} <br>
+    Estimated Tax: ₹ ${taxAmount.toFixed(0)} <br>
+    <b>Final In-Hand: ₹ ${inHand.toFixed(0)}</b>
+    `;
 }
 </script>
 
