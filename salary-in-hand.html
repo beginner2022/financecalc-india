@@ -4,15 +4,12 @@
 <head>
   <meta charset="UTF-8">
 
-  <title>Salary In-Hand Calculator India 2026 | CTC to Take Home Salary</title>
+  <title>Salary In-Hand Calculator India 2026 | CTC to Net Salary Breakdown</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta name="description"
-        content="Free Salary In-Hand Calculator India. Convert CTC to monthly take-home salary after tax, PF, and deductions. Accurate salary breakdown tool for employees.">
-
-  <meta name="keywords"
-        content="salary calculator india, in hand salary calculator, ctc to in hand salary, take home salary calculator, monthly salary calculator india">
+        content="Advanced Salary In-Hand Calculator India. Convert CTC to monthly and annual take-home salary with PF, tax estimation, and full salary breakdown.">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -21,19 +18,15 @@
 
 <header>
   <h1>Salary In-Hand Calculator</h1>
-  <p>Convert your CTC into monthly take-home salary</p>
+  <p>Industry-level CTC to Net Salary Breakdown (India)</p>
 </header>
 
 <div class="container">
 
-  <!-- MAIN CALCULATOR -->
+  <!-- INPUT CARD -->
   <div class="calculator-card">
 
-    <h2>Salary Details</h2>
-
-    <p class="subtitle">
-      Enter your annual CTC and estimated deductions.
-    </p>
+    <h2>Enter CTC Details</h2>
 
     <label>Annual CTC (₹)</label>
     <input id="ctc" type="number" placeholder="e.g. 1200000">
@@ -41,13 +34,13 @@
     <label>Tax Rate (%)</label>
     <input id="tax" type="number" placeholder="e.g. 10">
 
-    <label>PF / Other Deductions (%)</label>
-    <input id="pf" type="number" placeholder="e.g. 12">
+    <label>Professional Tax (Monthly ₹)</label>
+    <input id="pt" type="number" placeholder="e.g. 200">
 
     <button onclick="calculateSalary()">Calculate Salary</button>
 
     <div class="result" id="result">
-      Your result will appear here
+      Your net salary will appear here
     </div>
 
   </div>
@@ -55,73 +48,36 @@
   <!-- BREAKDOWN -->
   <div class="calculator-card">
 
-    <h3>Salary Breakdown</h3>
+    <h3>Salary Breakdown (Industry Standard)</h3>
 
     <div id="breakdown">
-      Enter values to see detailed breakdown
+      Enter values to see full breakdown
     </div>
 
   </div>
 
-  <!-- EXPLANATION -->
+  <!-- INFO -->
   <div class="calculator-card">
 
-    <h3>How Salary is Calculated</h3>
+    <h3>How this calculation works</h3>
 
     <p>
-      Your annual CTC is divided into monthly gross salary.
-      Then tax and PF deductions are applied to calculate your in-hand salary.
-    </p>
-
-    <p>
-      This tool gives an estimated take-home salary for financial planning.
+      This calculator estimates your salary using standard industry assumptions:
+      PF deduction, tax estimation, and monthly structuring of CTC.
     </p>
 
   </div>
 
-  <!-- SEO CONTENT SECTION -->
+  <!-- FAQ -->
   <div class="calculator-card">
 
-    <h3>What is In-Hand Salary?</h3>
+    <h3>FAQ</h3>
 
-    <p>
-      In-hand salary is the actual amount credited to your bank account
-      after deductions like tax, PF, and other contributions.
-    </p>
+    <p><b>Is this exact salary?</b><br>
+    No, actual salary depends on company structure and tax regime.</p>
 
-    <p>
-      It is usually lower than CTC (Cost to Company), which includes benefits.
-    </p>
-
-  </div>
-
-  <!-- FAQ (VERY IMPORTANT FOR SEO) -->
-  <div class="calculator-card">
-
-    <h3>Frequently Asked Questions</h3>
-
-    <p><b>Is CTC equal to in-hand salary?</b><br>
-    No, CTC includes bonuses and employer contributions.</p>
-
-    <p><b>How accurate is this calculator?</b><br>
-    It gives a close estimate based on inputs, but actual salary may vary.</p>
-
-    <p><b>What deductions are included?</b><br>
-    Tax and PF deductions are considered.</p>
-
-  </div>
-
-  <!-- RELATED CALCULATORS -->
-  <div class="calculator-card">
-
-    <h3>Related Calculators</h3>
-
-    <p>
-      <a href="emi.html">EMI Calculator</a> |
-      <a href="income-tax.html">Income Tax Calculator</a> |
-      <a href="epf.html">EPF Calculator</a> |
-      <a href="gratuity.html">Gratuity Calculator</a>
-    </p>
+    <p><b>What is included in deductions?</b><br>
+    PF, income tax, and professional tax are considered.</p>
 
   </div>
 
@@ -131,26 +87,43 @@
 function calculateSalary() {
 
   let ctc = Number(document.getElementById("ctc").value);
-  let tax = Number(document.getElementById("tax").value);
-  let pf = Number(document.getElementById("pf").value);
+  let taxRate = Number(document.getElementById("tax").value);
+  let pt = Number(document.getElementById("pt").value);
 
-  let monthlyGross = ctc / 12;
+  // Monthly base
+  let monthlyCTC = ctc / 12;
 
-  let taxAmount = monthlyGross * (tax / 100);
-  let pfAmount = monthlyGross * (pf / 100);
+  // Standard PF (employee 12% of basic, assume basic = 40% of CTC)
+  let basic = monthlyCTC * 0.4;
+  let pf = basic * 0.12;
 
-  let inHand = monthlyGross - taxAmount - pfAmount;
+  // Tax
+  let tax = monthlyCTC * (taxRate / 100);
+
+  // Gross deduction
+  let totalDeductions = pf + tax + pt;
+
+  // In-hand salary
+  let inHand = monthlyCTC - totalDeductions;
+
+  // Annual
+  let annualInHand = inHand * 12;
 
   document.getElementById("result").innerHTML =
-    "💰 Monthly In-Hand Salary: ₹ " +
+    "💰 Monthly In-Hand: ₹ " +
     inHand.toLocaleString("en-IN", { maximumFractionDigits: 0 });
 
   document.getElementById("breakdown").innerHTML =
     `
-    Monthly Gross: ₹ ${monthlyGross.toFixed(0)} <br>
-    Tax Deduction: ₹ ${taxAmount.toFixed(0)} <br>
-    PF/Other Deduction: ₹ ${pfAmount.toFixed(0)} <br>
-    <b>Final In-Hand: ₹ ${inHand.toFixed(0)}</b>
+    Monthly CTC: ₹ ${monthlyCTC.toFixed(0)} <br>
+    Basic Salary (est.): ₹ ${basic.toFixed(0)} <br>
+    PF Deduction: ₹ ${pf.toFixed(0)} <br>
+    Tax Deduction: ₹ ${tax.toFixed(0)} <br>
+    Professional Tax: ₹ ${pt.toFixed(0)} <br><br>
+
+    <b>Total Deductions: ₹ ${totalDeductions.toFixed(0)}</b><br>
+    <b>Net Monthly In-Hand: ₹ ${inHand.toFixed(0)}</b><br>
+    Annual In-Hand: ₹ ${annualInHand.toFixed(0)}
     `;
 }
 </script>
