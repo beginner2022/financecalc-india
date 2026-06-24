@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Retirement Corpus Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Retirement Corpus Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="monthly" placeholder="Monthly Expense Needed">
+  <br>
+  <input id="rate" placeholder="Inflation/Return %">
+  <br>
+  <input id="years" placeholder="Years Left to Retire">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let expense = Number(document.getElementById("monthly").value);
+  let r = Number(document.getElementById("rate").value) / 100;
+  let n = Number(document.getElementById("years").value);
+
+  let futureExpense = expense * Math.pow(1 + r, n);
+  let corpus = futureExpense * 12 * 25;
+
+  document.getElementById("result").innerText =
+    "Required Retirement Corpus: ₹ " + corpus.toFixed(0);
+}
+</script>
+
+</body>
+</html>
