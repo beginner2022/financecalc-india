@@ -111,3 +111,12 @@ button:hover {
 small {
   color: var(--muted);
 }
+
+
+h3 {
+  text-align: left;
+  margin-top: 30px;
+  color: #0f172a;
+  border-left: 4px solid #2563eb;
+  padding-left: 10px;
+}
