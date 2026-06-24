@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Break Even Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Break Even Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="fixed" placeholder="Fixed Cost">
+  <br>
+  <input id="price" placeholder="Selling Price per unit">
+  <br>
+  <input id="variable" placeholder="Variable Cost per unit">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let F = Number(document.getElementById("fixed").value);
+  let P = Number(document.getElementById("price").value);
+  let V = Number(document.getElementById("variable").value);
+
+  let BEP = F / (P - V);
+
+  document.getElementById("result").innerText =
+    "Break Even Units: " + BEP.toFixed(0);
+}
+</script>
+
+</body>
+</html>
