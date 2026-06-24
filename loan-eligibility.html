@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loan Eligibility Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Loan Eligibility Calculator</h1>
+</header>
+
+<div class="container">
+
+  <input id="income" placeholder="Monthly Income">
+  <br>
+  <input id="emi" placeholder="Existing EMI">
+  <br>
+
+  <button onclick="calc()">Calculate</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function calc() {
+  let income = Number(document.getElementById("income").value);
+  let emi = Number(document.getElementById("emi").value);
+
+  let maxEmi = income * 0.5;
+  let eligible = maxEmi - emi;
+
+  document.getElementById("result").innerText =
+    "Eligible EMI Capacity: ₹ " + eligible.toFixed(0);
+}
+</script>
+
+</body>
+</html>
